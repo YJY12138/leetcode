@@ -1,0 +1,29 @@
+ {
+        "configurations": [
+            {
+                "name": "Win32",
+                "includePath": [
+                    "${workspaceFolder}/**",
+                    "E:/RUANJIAN/dev/Dev-Cpp/MinGW64/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++",
+                    "E:/RUANJIAN/dev/Dev-Cpp/MinGW64/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++/x86_64-w64-mingw32",
+                    "E:/RUANJIAN/dev/Dev-Cpp/MinGW64/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++/backward",
+                    "E:/RUANJIAN/dev/Dev-Cpp/MinGW64/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/include",
+                    "E:/RUANJIAN/dev/Dev-Cpp/MinGW64/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/../../../../include",
+                    "E:/RUANJIAN/dev/Dev-Cpp/MinGW64/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/include-fixed",
+                    "E:/RUANJIAN/dev/Dev-Cpp/MinGW64/bin/../lib/gcc/x86_64-w64-mingw32/4.9.2/../../../../x86_64-w64-mingw32/include"
+                ],
+                "defines": [
+                    "_DEBUG",
+                    "UNICODE",
+                    "_UNICODE"
+                ],
+                "windowsSdkVersion": "10.0.17763.0",
+                "compilerPath": "E:/RUANJIAN/dev/Dev-Cpp/MinGW64/bin/g++.exe",
+                "cStandard": "c11",
+                "cppStandard": "c++17",
+                "intelliSenseMode": "msvc-x64"
+            }
+        ],
+        "version": 4
+
+    }

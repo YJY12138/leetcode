@@ -1,21 +1,91 @@
-﻿// leetcode53.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
-//
-
-#include <iostream>
-#include<bits.h>
+﻿#include <stdc++.h>
+#include <vector>
 using namespace std;
-int main()
+int maxSubArray1(vector<int> nums)//暴力
 {
-    std::cout << "Hello World!\n"; 
+	int temp = 0;
+	if (nums.size() == 0)
+		return 0;
+	else if (nums.size() == 1)
+		return nums[0];
+	else {
+
+		for (int i = 0; i < nums.size() - 1; i++)
+		{
+			int sum1 = 0;
+			for (int j = i; j < nums.size() - 1; j++)
+			{
+				sum1 += nums[j];
+				if (sum1 >= temp)
+					temp = sum1;
+			}
+
+		}
+	}
+	return temp;
+}
+int max(int a, int b,int  c)
+{
+	return a > b ? (a > c ? a : c) : (b > c ? b : c);
+}
+int fun(vector<int>& nums, int left, int right)
+{
+	if (left == right)
+		return nums[left];
+	if (left > right)
+		return INT_MIN;
+	int mid = (left + right) / 2; int templeft = 0; int tempright = 0;
+	int maxleft = fun(nums, left, mid-1);
+	int maxright = fun(nums, mid+1, right);
+
+
+	int  temp = 0;
+	for (int i = mid - 1; i >= left; i--)
+	{
+		//if (templeft + nums[i] > templeft)  逻辑错的
+			//templeft += nums[i];
+		temp += nums[i];
+		templeft = max(templeft, temp);
+
+	}
+
+	for (int i = mid + 1; i <=right; i++)
+	{
+		temp += nums[i];
+		tempright= max(tempright, temp);
+
+	}
+	return max(maxleft, maxright, templeft + tempright + nums[mid]);
+}
+int maxSubArray2(vector<int>& nums)//分治,递归算左右各自最大的值  再算跨越nums【mid】的最大值
+//三者取最大
+{
+	if (nums.size() == 1)return nums[0];
+	else return fun(nums, 0, nums.size()-1);
 }
 
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
+int maxSubArray3(vector<int >& nums, int left, int right)//dp
+{
+	int len = right + 1;
+	vector<int > max(len);
+	max[0] = nums[0];
+	for (int i = 1; i < len; i++)
+	{
+		if (max[i - 1] > 0)max[i] = nums[i]+max[i-1];
+		else max[i] = nums[i];
+	}
 
-// 入门提示: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
+	return max.back();
+}
+int main()
+{
+	vector<int> nums;
+	int n;
+	while (cin>>n)
+	{
+		nums.push_back(n);
+		if (cin.get() == '\n')
+			break;
+	}
+	cout << maxSubArray3(nums,0,nums.size()-1) << endl;
+}

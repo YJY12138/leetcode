@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include<stdc++.h>
 #include<stack>
 using namespace std;
 int main()
